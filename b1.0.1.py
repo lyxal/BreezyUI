@@ -1,6 +1,6 @@
 '''
 
-Project: BreezyUI Beta I (Beta I.py)
+Project: BreezyUI b1.0.1 (b1.0.1.py)
 Author: Jonathan Oswald (change this if posting on GitHub)
 Date Created: 3/8/2018
 Description:
