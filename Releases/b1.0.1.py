@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''
 
 Project: BreezyUI Version b1.0.1 (b1.0.1.py)
@@ -18,7 +19,9 @@ DocEdit and my Head Scruiteneer Program.
 import tkinter
 from tkinter import dnd #Accessed with `tkinter.dnd`. Provides drag'n'drop
                         #services                                        .
-import functools
+import functools, sys
+sys.path.insert(0, '../Libraries')
+
 import screens
 import tkinter.colorchooser as tkColor
 
@@ -278,18 +281,19 @@ class CoreWidget:
         '''
 
         self.widget_type = widget_type
-        self.widget = eval("tkinter.{0}(attributes_area, {1})".format\
+        self.widget = eval("tkinter.{0}(widget_area.canvas, {1})".format\
                            (widget_type, kwargs))
 
-        self.widget.grid(row=row, column=column)
+        self.widget.grid(row=CoreWidget.row, column=CoreWidget.column)
 
-        if column == 1:
-            row += 1
-            column = 0
+        if CoreWidget.column == 1:
+            CoreWidget.row += 1
+            CoreWidget.column = 0
         else:
-            column = 1
+            CoreWidget.column = 1
 
-        widget.bind("<ButtonPress>", functools.partial(on_dnd_start, widget_type=\
+        self.widget.bind("<ButtonPress>", functools.partial(on_dnd_start,
+                                                            widget_type=\
                                                          widget_type))
         
 
@@ -350,24 +354,9 @@ widgets = dict() #A dictionary to store all the widget objects which the clones 
 
 widgets["label"] = CoreWidget("Label", text="Label")
 widgets["button"] = CoreWidget("Button", text="Button")
-widgets["entry"] = CoreWidget("Entry", textvariable=tkinter\
-                              .StringVar(root, value="Entry"))
+widgets["entry"] = CoreWidget("Entry", textvariable='tkinter\
+                              .StringVar(root, value="Entry")')
                                                     
-
-
-widgets["button"] = tkinter.Button(widget_area.canvas, text="Button")
-widgets["button"].pack()
-widgets["button"].bind("<ButtonPress>", functools.partial(on_dnd_start,
-                                                        widget_type=\
-                                                         "Button"))
-
-widgets["entry"] = tkinter.Entry(widget_area.canvas, textvariable=tkinter.\
-                                 StringVar\
-                                 (root, value="Entry"))
-widgets["entry"].pack()
-widgets["entry"].bind("<ButtonPress>", functools.partial(on_dnd_start,
-                                                         widget_type=\
-                                                         "Entry"))
 
 attributes_area = tkinter.Tk()
 attributes_area.geometry("+803+160")
@@ -391,9 +380,6 @@ options["confirm"] = [tkinter.Button(attributes_area,
                       (2, 1)]
 
 colour = "#ffffff"
-    
-        
-        
-'''≈≈'''
+            
 
         
