@@ -1,0 +1,11 @@
+# What's new in BreezyUI b1.1.0
+- Backwards compatibility for Python 2 started
+- Attributes area window shows when widget right-clicked and hides when `Done` button clicked
+- Changed the code to incorporate classes
+- Added option to export python code for GUI (*TODO: Only export the necessary attributes*)
+- Added more changeable attributes
+
+# What's New in BreezyUI b1.0.0
+- 3 core widgets added (`Label`, `Button` and `Entry`)
+- Ability to edit the text displayed on widgets
+- Started trying to make the background colours of widgets changeable (**WIP**)
