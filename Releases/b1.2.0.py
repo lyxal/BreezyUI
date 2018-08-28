@@ -231,6 +231,9 @@ class DndSpace:
     def show(self):
         self.top.deiconify()
 
+    def hide(self):
+        self.top.withdraw()
+
     #The next function is more of a compability function, I believe, as it just
     #returns self                                                             .
 
@@ -481,7 +484,24 @@ def new():
     home_screen.hide()
     root.withdraw()
     main_area.show()
+    main_area.top.geometry()
     widget_area.show()
+
+def back():
+    home_screen.show()
+    #TODO: Empty entry widgets
+    root.deiconify()
+    main_area.hide()
+    widget_area.hide()
+    attributes_area.withdraw()
+
+def validate_size(width, height):
+    try:
+        int(width)
+        int(height)
+    except ValueError:
+        #TODO:
+
 
 
 dragged_widgets = list() #of widgets
@@ -597,6 +617,7 @@ root.geometry("800x600") #Set the size of the window
 menu_bar = tkinter.Menu(root)
 file_menu = tkinter.Menu(menu_bar, tearoff=0)
 file_menu.add_command(label="Export", command=export)
+file_menu.add_command(label="New", command=back)
 file_menu.add_separator()
 file_menu.add_command(label="Exit", command=root.quit)
 menu_bar.add_cascade(label="File", menu=file_menu)
