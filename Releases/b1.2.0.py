@@ -501,7 +501,8 @@ def validate_size(width, height):
         int(width)
         int(height)
     except ValueError:
-        #TODO:
+        #TODO: Show that the canvas size is invalid
+        pass
 
 
 
