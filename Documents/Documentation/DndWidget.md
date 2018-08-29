@@ -1,18 +1,17 @@
 # `DndWidget`
+*A class allowing for draggable widgets to be created like tkinter widgets would*
 
-_A class allowing for draggable widgets to be created like tkinter widgets would_
-
-`DndWidget`.**\_\_init\_\_**(_self_, _widget_, _\*\*kwargs_)
+`DndWidget`.**__init__**(*self*, *widget*, ***kwargs*)
 
 |Parameter|Type|Description|
 |:--------|:---|-----------|
 |`self`|self|The required self for class initialisation|
 |`widget`|`str`|The type of widget the instance of `DndWidget` will be|
-|`**kwargs`|`dict` [`str` : _mixed_]|The arguments to build the widget|
+|`**kwargs`|`dict` [`str` : *mixed*]|The arguments to build the widget|
 
 Creates a `DndWidget` object which stores a tkinter widget that is able to be dragged around. It also stores the id of the widget, the canvas position of the widget. Doesn't return anything.
 
-`DndWidget`.**attach**(_self_, _canvas_, _x=10_, _y=10_)
+`DndWidget`.**attach**(*self*, *canvas*, *x=10*, *y=10*)
 
 |Parameter|Type|Description|
 |:--------|:---|-----------|
@@ -22,22 +21,39 @@ Creates a `DndWidget` object which stores a tkinter widget that is able to be dr
 
 Creates the draggable tkinter widget, places it at the specified co-ordinates (default `(10, 10)`) and enables it to be edited. Doesn't return anything.
 
-`DndWidget`.**detach**(_self_)
+`DndWidget`.**detach**(*self*)
 
 Simply detaches the widget from the canvas and destroys it. Doesn't return anything.
 
-`DndWidget`.**press**(_self_, _event_)
+`DndWidget`.**press**(*self*, *event*)
 
 |Parameter|Type|Description|
 |:--------|:---|-----------|
-|`event`|_Unknown_|The event given when the widget is pressed|
+|`event`|*Unknown*|The event given when the widget is pressed|
 
 Updates the x and y position of the pointer and returns nothing.
 
-`DndWidget`.**move**(_self_, _event_)
+`DndWidget`.**move**(*self*, *event*)
 
 |Parameter|Type|Description|
 |:--------|:---|-----------|
-|`event`|_Unknown_|The event given to the widget when moved|
+|`event`|*Unknown*|The event given to the widget when moved|
 
 Moves the widget on the canvas and updates the x and y position of the widget. Doesn't return anything.
+
+`DndWidget`.**putback**(*self*)
+
+Places the widget in its original position. Returns nothing.
+
+`DndWidget`.**where**(*self*, *canvas*, *event*) -> `(int)`
+
+|Parameter|Type|Description|
+|:--------|:---|-----------|
+|`canvas`|`tkinter.Canvas`|The canvas which the widget is on|
+|`event`|*Unknown*|The event that is broadcasted when the function is called|
+
+Calculates the relative position of the widget on the canvas it is on. Returns a tuple with the relative position of the widget.
+
+`DndWidget`.**dnd_end**(*self*, *target*, *event*)
+
+Compatibility function.
