@@ -8,7 +8,7 @@ _A class that stores changeable attributes of widgets_
 |:--------|:---|-----------|
 |`self`|self|The required self for class initialisation|
 |`name`|`str`|The name of the option (e.g. "Type")|
-|`config_name`|`str`|The name that the option can be referred to as when updating the widget (e.g. "$text")|
+|`config_name`|`str`|The name that the option can be referred to as when updating the widget (e.g. "$text"). Or, if the attribute is something that is directly changeable (via using `.config()`), the name of the attribute keyword|
 |`attr_var`|`str`|The variable which the value for the option is stored (must be the variable name in a string)|
 |`widget_type`|`str`|The widget type that this option will be shown as (e.g. the Text option will be displayed as an `Entry`)|
 |`applicable_widgets`|`[str]`|The widgets for which this option applies to (e.g. the background colour attribute may only apply to `Label`s and `Canvas`es)|
