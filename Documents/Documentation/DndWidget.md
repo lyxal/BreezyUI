@@ -11,6 +11,8 @@
 
 Creates a `DndWidget` object which stores a tkinter widget that is able to be dragged around. It also stores the id of the widget, the canvas position of the widget. Doesn't return anything.
 
+<hr>
+
 `DndWidget`.**attach**(*self*, *canvas*, *x=10*, *y=10*)
 
 |Parameter|Type|Description|
@@ -21,9 +23,13 @@ Creates a `DndWidget` object which stores a tkinter widget that is able to be dr
 
 Creates the draggable tkinter widget, places it at the specified co-ordinates (default `(10, 10)`) and enables it to be edited. Doesn't return anything.
 
+<hr>
+
 `DndWidget`.**detach**(*self*)
 
 Simply detaches the widget from the canvas and destroys it. Doesn't return anything.
+
+<hr>
 
 `DndWidget`.**press**(*self*, *event*)
 
@@ -33,6 +39,8 @@ Simply detaches the widget from the canvas and destroys it. Doesn't return anyth
 
 Updates the x and y position of the pointer and returns nothing.
 
+<hr>
+
 `DndWidget`.**move**(*self*, *event*)
 
 |Parameter|Type|Description|
@@ -41,9 +49,13 @@ Updates the x and y position of the pointer and returns nothing.
 
 Moves the widget on the canvas and updates the x and y position of the widget. Doesn't return anything.
 
+<hr>
+
 `DndWidget`.**putback**(*self*)
 
 Places the widget in its original position. Returns nothing.
+
+<hr>
 
 `DndWidget`.**where**(*self*, *canvas*, *event*) -> `(int)`
 
@@ -53,6 +65,8 @@ Places the widget in its original position. Returns nothing.
 |`event`|*Unknown*|The event that is broadcasted when the function is called|
 
 Calculates the relative position of the widget on the canvas it is on. Returns a tuple with the relative position of the widget.
+
+<hr>
 
 `DndWidget`.**dnd_end**(*self*, *target*, *event*)
 
