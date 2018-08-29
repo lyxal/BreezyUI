@@ -14,7 +14,9 @@ _A class that stores changeable attributes of widgets_
 |`applicable_widgets`|`[str]`|The widgets for which this option applies to (e.g. the background colour attribute may only apply to `Label`s and `Canvas`es)|
 |`*args`|`(Mixed)`|Positional arguments used to configure the widget (the one that displays in the attribute area)|
 |`**kwargs`|`[str : Mixed]`|Keyword arguments used to configure the widget (the one that displays in the attribute area)|
+
 <hr>
+
 `Option`.**show**(_self_, _widget\_type_)
 
 |Parameter|Type|Description|
@@ -22,7 +24,9 @@ _A class that stores changeable attributes of widgets_
 |`widget_type`|`str`|The type of widget whose attributes are being changed|
 
 If the widget being edited is of a type which this option supports, then the option is shown, otherwise, nothing happens. Nothing is returned from this function.
+
 <hr>
+
 `Option`.**hide**(_self_)
 
 Hides the option using `.grid_forget()`. Returns nothing.
