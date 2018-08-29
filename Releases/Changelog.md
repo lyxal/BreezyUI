@@ -1,3 +1,8 @@
+# What's new in BreezyUI b1.3.1
+* Made all classes external (i.e. placed them in the `Libraries` folder)
+* Width and height entry boxes on home screen now flash when given invalid input
+* Clicking new removes all objects on widget area
+
 # What's new in BreezyUI b1.3.0
 * _Everything new in pre b1.3.0_
 * When exporting UIs, the python code that is generated is now fixed (There were issues with new lines)
