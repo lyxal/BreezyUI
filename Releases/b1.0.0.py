@@ -1,4 +1,29 @@
+'''
+MIT License
+
+Copyright (c) 2018 JonoCode9374
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+'''
+
 #!/usr/bin/env python3
+
 '''
 
 Project: BreezyUI Version b1.0.0 (b1.0.0.py)
@@ -26,7 +51,7 @@ import screens
 import tkinter.colorchooser as tkColor
 
 class DndWidget():
-    
+
     def __init__(self, widget, **kwargs):
         '''
         Takes:
@@ -253,7 +278,7 @@ class DndSpace:
 
     #I won't comment the next few fuxnctions, as I don't quite understand them in
     #enough detail to provide what they take, do and return                    .
-        
+
     def dnd_motion(self, source, event):
         x, y = source.where(self.canvas, event)
         x1, y1, x2, y2 = self.canvas.bbox(self.dndid)
@@ -272,7 +297,7 @@ class DndSpace:
 class CoreWidget:
 
     row = column = 0
-    
+
     def __init__(self, widget_type, **kwargs):
         '''
         Takes:
@@ -295,7 +320,7 @@ class CoreWidget:
         self.widget.bind("<ButtonPress>", functools.partial(on_dnd_start,
                                                             widget_type=\
                                                          widget_type))
-        
+
 
 
 def on_dnd_start(event, widget_type):
@@ -356,7 +381,7 @@ widgets["label"] = CoreWidget("Label", text="Label")
 widgets["button"] = CoreWidget("Button", text="Button")
 widgets["entry"] = CoreWidget("Entry", textvariable='tkinter\
                               .StringVar(root, value="Entry")')
-                                                    
+
 
 attributes_area = tkinter.Tk()
 attributes_area.geometry("+803+160")
@@ -380,6 +405,3 @@ options["confirm"] = [tkinter.Button(attributes_area,
                       (2, 1)]
 
 colour = "#ffffff"
-            
-
-        
