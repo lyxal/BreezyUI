@@ -40,7 +40,8 @@ class CoreWidget:
         '''
 
         self.widget_type = widget_type
-        self.widget = eval("tkinter.{0}(widget_area.canvas, {1})".format(widget_type, ', '.join([str(x) + '=' + kwargs[x] for x in kwargs])))
+        
+        self.widget = eval("tkinter.{0}(widget_area.canvas, {1})".format(widget_type, ', '.join([str(x) + '=\'' + str(kwargs[x]) + "'" for x in kwargs])))
 
         self.widget.grid(row=CoreWidget.row, column=CoreWidget.column)
 

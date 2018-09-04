@@ -1,7 +1,7 @@
 # `DndWidget`
 *A class allowing for draggable widgets to be created like tkinter widgets would*
 
-`DndWidget`.**__init__**(*self*, *widget*, ***kwargs*)
+`DndWidget`.**__init__**(_self_, _widget_, _**kwargs_)
 
 |Parameter|Type|Description|
 |:--------|:---|-----------|
@@ -71,4 +71,3 @@ Calculates the relative position of the widget on the canvas it is on. Returns a
 `DndWidget`.**dnd_end**(*self*, *target*, *event*)
 
 Compatibility function.
-

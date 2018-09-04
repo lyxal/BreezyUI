@@ -23,17 +23,18 @@ SOFTWARE.
 '''
 
 import tkinter, functools
-import bUI
+import bUI, re
 
 edit_attributes = None
 
 class DndWidget():
     id_number = 0
-    def __init__(self, widget, **kwargs):
+    def __init__(self, widget, args=None, **kwargs):
         '''
         Takes:
         - self
         - widget [str] -- The type of widget that this instance will be
+        - args [dict] -- Attributes set when created (e.g. id, name -- things which don't respond to tkinter widget configuration)
         - kwargs [dict] -- Arguments used to build widget later on
 
         Does:
@@ -47,6 +48,10 @@ class DndWidget():
         self.kwargs = kwargs
         self.name = "object{}".format(DndWidget.id_number)
         DndWidget.id_number += 1
+
+        if args:
+            for attribute in args:
+                exec("self.{0} = {1}".format(attribute, args[attribute]))
 
 
     def attach(self, canvas, x=10, y=10):
@@ -77,8 +82,7 @@ class DndWidget():
 
         if not canvas:
             return
-
-        widget = eval("tkinter.{0}(canvas, {1})".format(self.widget_type, ', '.join([str(x) + '=' + self.kwargs[x] for x in self.kwargs])))
+        widget = eval("tkinter.{0}(canvas, {1})".format(self.widget_type, ', '.join([str(x) + '=\'' + str(self.kwargs[x]) + "'" for x in self.kwargs])))
 
 
 
@@ -94,6 +98,14 @@ class DndWidget():
 
         if self.widget_type == "Entry":
             self.widget["textvariable"] = self.txt_var #I love this line (see fix 001)
+            self.widget["state"] = "disabled"
+
+            if "Placeholder" in dir(self):
+                self.widget["state"] = "normal"
+                self.widget.delete(0, tkinter.END)
+                self.widget.insert(0, self.Placeholder)
+                self.widget['state'] = "disabled"
+
         else:
             self.widget["state"] = "normal"
 
