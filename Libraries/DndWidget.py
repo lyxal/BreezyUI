@@ -29,7 +29,7 @@ edit_attributes = None
 
 class DndWidget():
     id_number = 0
-    def __init__(self, widget, args=None, **kwargs):
+    def __init__(self, widget_type, widget, args=None, **kwargs):
         '''
         Takes:
         - self
@@ -43,7 +43,7 @@ class DndWidget():
         Returns:
         - None
         '''
-        self.widget_type = widget
+        self.widget_type = widget_type
         self.canvas = self.widget = self._id =  None
         self.kwargs = kwargs
         self.name = "object{}".format(DndWidget.id_number)

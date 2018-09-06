@@ -32,7 +32,7 @@ class CoreWidget:
 
     row = column = 0
 
-    def __init__(self, widget_type, **kwargs):
+    def __init__(self, widget_type, widget, **kwargs):
         '''
         Takes:
         - self
@@ -40,8 +40,8 @@ class CoreWidget:
         '''
 
         self.widget_type = widget_type
-        
-        self.widget = eval("tkinter.{0}(widget_area.canvas, {1})".format(widget_type, ', '.join([str(x) + '=\'' + str(kwargs[x]) + "'" for x in kwargs])))
+
+        self.widget = eval("tkinter.{0}(widget_area.canvas, {1})".format(widget, ', '.join([str(x) + '=\'' + str(kwargs[x]) + "'" for x in kwargs])))
 
         self.widget.grid(row=CoreWidget.row, column=CoreWidget.column)
 
@@ -51,4 +51,4 @@ class CoreWidget:
         else:
             CoreWidget.column = 1
 
-        self.widget.bind("<ButtonPress>", functools.partial(on_dnd_start, widget_type=widget_type))
+        self.widget.bind("<ButtonPress>", functools.partial(on_dnd_start,  widget_config=widget, widget_type=widget_type))

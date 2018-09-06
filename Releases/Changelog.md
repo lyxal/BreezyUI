@@ -1,3 +1,13 @@
+# What's new in BreezyUI b1.4.0
+* BreezyUI files are now able to be loaded (_Window sizing isn't avaliable yet, and will be made accessible later_)
+* `Save` and `Export` dialogues now start in the last place a file was saved to
+* Home screen shows whether or not width and height are valid when making a new GUI
+* Cleaned up code files
+* The box where the text for labels is now a `Text` widget
+* Canvas width and height can now be changed
+* Started adding a list manager widget (not usable yet, just in the code)
+* Added the ability to give names to widgets, which are used in the exported code (verification of valid id name not implemented yet.)
+
 # What's new in BreezyUI b1.3.1
 * Made all classes external (i.e. placed them in the `Libraries` folder)
 * Width and height entry boxes on home screen now flash when given invalid input
@@ -9,7 +19,6 @@
 * Added the `Canvas` core widget and customisable attributes
 * Position of widget area is now relative to the size of the main area
 * Changed how bUI files are created (i.e. the way they are formatted)
-<!-- TODO in b1.4.0: Make the save dialog start in a directory that ISN'T C: -->
 
 # What's new in BreezyUI pre b1.3.0
 * Window size of new windows is now changeable
