@@ -1,6 +1,11 @@
 # BreezyUI
 Many Python users who work with graphical interfaces know the pains of designing and creating a [Graphical User Interface](https://en.wikipedia.org/wiki/Graphical_user_interface) with Python's built-in graphics library `tkinter` (`Tkinter` in Python 2 and `tkinter` in Python 3)  -- creating interfaces requires intense planning (getting the co-ordinates for where each widget goes), **lots** of trial and error. To solve these problems experienced by many a programmer, regardless of experience, I will be making a GUI maker called _BreezyUI&copy;_. BreezyUI will allow users to drag-and-drop `tkinter` widgets in a [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG) style to make the user interface they want, much like the storyboarding feature used in Xcode.
 
+# What's new in BreezyUI b1.4.1
+* Fixed loading process
+* Added window size-ability when loading
+* Strings with new lines will no longer break loading system
+
 # What's new in BreezyUI b1.4.0
 * BreezyUI files are now able to be loaded (_Window sizing isn't avaliable yet, and will be made accessible later_)
 * `Save` and `Export` dialogues now start in the last place a file was saved to
