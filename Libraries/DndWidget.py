@@ -29,11 +29,11 @@ edit_attributes = None
 
 class DndWidget():
     id_number = 0
-    def __init__(self, widget_type, widget, args=None, **kwargs):
+    def __init__(self, widget_type, args=None, **kwargs):
         '''
         Takes:
         - self
-        - widget [str] -- The type of widget that this instance will be
+        - widget_type [str] -- The type of widget that this instance will be
         - args [dict] -- Attributes set when created (e.g. id, name -- things which don't respond to tkinter widget configuration)
         - kwargs [dict] -- Arguments used to build widget later on
 
@@ -82,7 +82,7 @@ class DndWidget():
 
         if not canvas:
             return
-        widget = eval("tkinter.{0}(canvas, {1})".format(self.widget_type, ', '.join([str(x) + '=\'' + str(self.kwargs[x]) + "'" for x in self.kwargs])))
+        widget = eval("tkinter.{0}(canvas, {1})".format(self.widget_type, ', '.join([str(x) + '=\'\'\'' + str(self.kwargs[x]) + "\'\'\'" for x in self.kwargs])))
 
 
 

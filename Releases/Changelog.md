@@ -1,3 +1,8 @@
+# What's new in BreezyUI b1.4.1
+* Fixed loading process
+* Added window size-ability when loading
+* Strings with new lines will no longer break loading system
+
 # What's new in BreezyUI b1.4.0
 * BreezyUI files are now able to be loaded (_Window sizing isn't avaliable yet, and will be made accessible later_)
 * `Save` and `Export` dialogues now start in the last place a file was saved to

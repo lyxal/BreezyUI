@@ -51,4 +51,4 @@ class CoreWidget:
         else:
             CoreWidget.column = 1
 
-        self.widget.bind("<ButtonPress>", functools.partial(on_dnd_start,  widget_config=widget, widget_type=widget_type))
+        self.widget.bind("<ButtonPress>", functools.partial(on_dnd_start, widget_type=widget_type))
