@@ -1,6 +1,16 @@
 # BreezyUI
 Many Python users who work with graphical interfaces know the pains of designing and creating a [Graphical User Interface](https://en.wikipedia.org/wiki/Graphical_user_interface) with Python's built-in graphics library `tkinter` (`Tkinter` in Python 2 and `tkinter` in Python 3)  -- creating interfaces requires intense planning (getting the co-ordinates for where each widget goes), **lots** of trial and error. To solve these problems experienced by many a programmer, regardless of experience, I will be making a GUI maker called _BreezyUI&copy;_. BreezyUI will allow users to drag-and-drop `tkinter` widgets in a [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG) style to make the user interface they want, much like the storyboarding feature used in Xcode.
 
+# What's new in BreezyUI b1.4.0
+* BreezyUI files are now able to be loaded (_Window sizing isn't avaliable yet, and will be made accessible later_)
+* `Save` and `Export` dialogues now start in the last place a file was saved to
+* Home screen shows whether or not width and height are valid when making a new GUI
+* Cleaned up code files
+* The box where the text for labels is now a `Text` widget
+* Canvas width and height can now be changed
+* Started adding a list manager widget (not usable yet, just in the code)
+* Added the ability to give names to widgets, which are used in the exported code (verification of valid id name not implemented yet.)
+
 # What's new in BreezyUI b1.3.1
 * Made all classes external (i.e. placed them in the `Libraries` folder)
 * Width and height entry boxes on home screen now flash when given invalid input
