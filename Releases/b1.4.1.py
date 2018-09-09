@@ -439,7 +439,7 @@ root.geometry("{0}x{1}") #Set the size of the window
 
         if widget.widget_type == "Entry":
             if widget.widget.get():
-                code += "{0}.insert(0, {1})".format(widget.name, widget.widget.get()) + "\n"
+                code += "{0}.insert(0, '{1}')".format(widget.name, widget.widget.get()) + "\n
 
     code += "\n#################END OF GENERATED CODE#################"
     code += "\n#Add your code beneath this line"
