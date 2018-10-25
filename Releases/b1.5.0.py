@@ -207,7 +207,7 @@ def update_widget():
 
             elif option.attribute == "$items":
                 del target_dndw.items[:]
-                target_dndw.items.append(reversed(eval(option.var)))
+                target_dndw.items.append(list(reversed(eval(option.var))))
 
             elif option.attribute == "$placeholder":
                 target_widget["state"] = "normal"
