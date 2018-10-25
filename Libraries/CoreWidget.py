@@ -32,16 +32,31 @@ class CoreWidget:
 
     row = column = 0
 
-    def __init__(self, widget_type, widget, **kwargs):
+    def __init__(self, widget_type, display_widget, *args, **kwargs):
         '''
         Takes:
         - self
         - widget_type -- The type of tkinter widget that the instance will be
+        - display_widget -- The widget the CoreWidget will display as
         '''
 
         self.widget_type = widget_type
 
-        self.widget = eval("tkinter.{0}(widget_area.canvas, {1})".format(widget, ', '.join([str(x) + '=\'' + str(kwargs[x]) + "'" for x in kwargs])))
+        self.widget = "tkinter.{0}(widget_area.canvas,".format(display_widget)
+
+        if args:
+            self.widget += ", ".join(
+                [
+                    "'{0}'".format(arg) if arg[0] != "$"
+                    else "{0}".format(arg[1:])
+                    for arg in args
+                ]
+            ) + ", "
+
+
+        self.widget += str(kwargs) + ")"
+        self.widget = eval(self.widget)
+
 
         self.widget.grid(row=CoreWidget.row, column=CoreWidget.column)
 
@@ -51,4 +66,4 @@ class CoreWidget:
         else:
             CoreWidget.column = 1
 
-        self.widget.bind("<ButtonPress>", functools.partial(on_dnd_start, widget_type=widget_type))
+        self.widget.bind("<ButtonPress>", functools.partial(on_dnd_start, widget_type=widget_type, display_widget=display_widget))

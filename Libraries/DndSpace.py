@@ -25,13 +25,14 @@ SOFTWARE.
 import tkinter, functools
 
 class DndSpace:
-    def __init__(self, root, width, height):
+    def __init__(self, root, width, height, name=None):
         '''
         Takes:
         - self
         - root [tkinter.Tk()] -- the window which the space will be on
         - width [int] -- the width of the canvas
         - height [int] -- the height of the canvas
+        - name [str] -- The name of the DndSpace
 
         Does:
         - Intalises this instance of DndSpace
@@ -41,11 +42,17 @@ class DndSpace:
         '''
 
         self.top = tkinter.Toplevel(root)
+        self.name = name
         self.top.withdraw()
-        self.canvas = tkinter.Canvas(self.top, width=width, height=height)
+        self.width = width
+        self.height = height
+        #self.top.geometry("{}")
+        self.frame = tkinter.Frame(self.top, width=width, height=height)
+        self.canvas = tkinter.Canvas(self.frame, width=width, height=height)
+        self.frame.place(x=0, y=0)
         self.canvas.pack(fill="both", expand=1)
         self.canvas.dnd_accept = self.dnd_accept
-
+        
 
     def show(self):
         self.top.deiconify()

@@ -1,3 +1,14 @@
+# What's new in BreezyUI b1.5.0
+* Added `Listbox` widget <!-- |████------------------------------------| 10% done -->
+* Object names are now checked to ensure that they are valid (only valid python variable names are acceptable)
+* Changed look of main area (added grey background, cantered canvas in area)
+* Added `Checkbox` widget
+* Added `OptionMenu` widget
+* Added `TextBox` widget
+* Added `Load .bui File` button to homepage
+* Added keyboard shortcut to export files (`Cmd + e`)
+_TODO: Add more customisable options for new widgets_
+
 # What's new in BreezyUI b1.4.1
 * Fixed loading process
 * Added window size-ability when loading

@@ -29,11 +29,12 @@ edit_attributes = None
 
 class DndWidget():
     id_number = 0
-    def __init__(self, widget_type, args=None, **kwargs):
+    def __init__(self, widget_type, display_widget, args=None, *aargs, **kwargs):
         '''
         Takes:
         - self
         - widget_type [str] -- The type of widget that this instance will be
+        - display_widget -- What the widget will show up as
         - args [dict] -- Attributes set when created (e.g. id, name -- things which don't respond to tkinter widget configuration)
         - kwargs [dict] -- Arguments used to build widget later on
 
@@ -43,16 +44,30 @@ class DndWidget():
         Returns:
         - None
         '''
-        self.widget_type = widget_type
+        self.widget_type, self.display = widget_type, display_widget
         self.canvas = self.widget = self._id =  None
         self.kwargs = kwargs
         self.name = "object{}".format(DndWidget.id_number)
         DndWidget.id_number += 1
-
+        self.args = {}
+        #self.aargs = ""
         if args:
             for attribute in args:
                 exec("self.{0} = {1}".format(attribute, args[attribute]))
+                self.args[attribute] = args[attribute]
 
+        if len(aargs):
+            self.aargs = ", ".join(
+
+              [
+                "{0}".format(arg)
+                for arg in aargs
+              ]
+
+            ) #Innovative form of [value if condition else value for value in variable]
+            self.aargs += ", "
+        else:
+            self.aargs = ""
 
     def attach(self, canvas, x=10, y=10):
         '''
@@ -82,7 +97,15 @@ class DndWidget():
 
         if not canvas:
             return
-        widget = eval("tkinter.{0}(canvas, {1})".format(self.widget_type, ', '.join([str(x) + '=\'\'\'' + str(self.kwargs[x]) + "\'\'\'" for x in self.kwargs])))
+
+
+        widget = eval(
+        "tkinter.{0}(canvas, {1}{2})".format(self.display, self.aargs,
+         ', '.join(
+            [
+                str(x) + '=\'\'\'' + str(self.kwargs[x]) + "\'\'\'"
+                for x in self.kwargs
+            ])))
 
 
 
@@ -95,6 +118,7 @@ class DndWidget():
         widget.bind("<ButtonPress>", self.press)
         self.widget.bind("<Button-2>", functools.partial(edit_attributes, source=self.widget, dnd_source=self))
         self.txt_var = tkinter.StringVar()
+        self.bool_var = tkinter.BooleanVar()
 
         if self.widget_type == "Entry":
             self.widget["textvariable"] = self.txt_var #I love this line (see fix 001)
@@ -106,8 +130,24 @@ class DndWidget():
                 self.widget.insert(0, self.Placeholder)
                 self.widget['state'] = "disabled"
 
+        elif self.widget_type == "Checkbutton":
+            self.widget["variable"] = self.bool_var
+            self.widget["state"] = "disabled"
+
+        elif self.widget_type == "OptionMenu":
+            self.widget["state"] = tkinter.DISABLED
         else:
             self.widget["state"] = "normal"
+            del self.txt_var
+            del self.bool_var
+
+        if self.widget_type == "Listbox":
+            self.widget.create_text(100, 50, text="Listbox Object")
+
+        elif self.widget_type == "Text":
+            self.widget.create_text(100, 50, text="Text Object")
+
+
 
         self.attributes = bUI.get_attributes(self.widget)
     def detach(self):
@@ -130,7 +170,7 @@ class DndWidget():
         widget = self.widget
         self.canvas = self.widget = self._id = None
         canvas.delete(_id)
-        widget.destroy
+        widget.destroy()
 
     def press(self, event):
         '''
@@ -214,3 +254,6 @@ class DndWidget():
         '''
 
         pass
+
+    def __str__(self):
+        return "DndWidget <<{0}>>".format(self.widget_type)
