@@ -1,5 +1,5 @@
 # What's new in BreezyUI b1.5.0
-* Added `Listbox` widget <!-- |████------------------------------------| 10% done -->
+* Added `Listbox` widget 
 * Object names are now checked to ensure that they are valid (only valid python variable names are acceptable)
 * Changed look of main area (added grey background, cantered canvas in area)
 * Added `Checkbox` widget
