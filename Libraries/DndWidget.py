@@ -134,6 +134,12 @@ class DndWidget():
             self.widget["variable"] = self.bool_var
             self.widget["state"] = "disabled"
 
+        elif self.widget_type == "Radiobutton":
+            self.widget.deselect()
+
+        elif self.widget_type == "Spinbox":
+            self.widget["state"] = tkinter.DISABLED
+
         elif self.widget_type == "OptionMenu":
             self.widget["state"] = tkinter.DISABLED
         else:
@@ -147,7 +153,8 @@ class DndWidget():
         elif self.widget_type == "Text":
             self.widget.create_text(100, 50, text="Text Object")
 
-
+        elif self.widget_type == "Frame":
+            self.widget.create_text(100, 50, text="Frame Object")
 
         self.attributes = bUI.get_attributes(self.widget)
     def detach(self):

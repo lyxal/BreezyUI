@@ -35,7 +35,7 @@ class DndSpace:
         - name [str] -- The name of the DndSpace
 
         Does:
-        - Intalises this instance of DndSpace
+        - Initialises  this instance of DndSpace
 
         Returns:
         - None
@@ -52,7 +52,7 @@ class DndSpace:
         self.frame.place(x=0, y=0)
         self.canvas.pack(fill="both", expand=1)
         self.canvas.dnd_accept = self.dnd_accept
-        
+
 
     def show(self):
         self.top.deiconify()
